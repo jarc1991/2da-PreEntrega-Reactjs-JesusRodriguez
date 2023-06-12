@@ -1,7 +1,7 @@
 const products = [{
     id: 11,
     title: "flotador",
-    nombre: "Flotador I Drink W.",
+    nombre: "Flotador IDW.",
     categoria: "deportes",
     precio: "20.000",
     stock: 5,
