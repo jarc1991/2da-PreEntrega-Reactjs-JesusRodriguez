@@ -1,6 +1,6 @@
 import './itemListContainer.css'
 import { useState, useEffect } from 'react'
-import { data, dataId } from '../async-mocks'
+import { data } from '../async-mocks'
 import ItemList from './itemList'
 
 import { useParams } from 'react-router-dom'
@@ -10,36 +10,20 @@ const ItemListContainer = ({greeting}) => {
   const [products, setProducts] = useState([])
   const {categoriaId} = useParams()
 
-  useEffect(() => {
+  const categoryFilter = categoriaId ? categoriaId : false;
+    useEffect(() => {
 
-    const asyncFunc = categoriaId ? dataId : data
-
-    asyncFunc(categoriaId)
-      .then(response => {
-          setProducts(response)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-
-  }, [categoriaId])
-     
-
-    /*useEffect(() => {
-
-      data()
+      data(categoryFilter) 
         .then(response => {
 
           setProducts(response)
-
         })
         .catch(error => {
 
           console.error(error)
-
         })
 
-    }, [])*/
+    }, [categoryFilter])
 
   return (
     
@@ -65,3 +49,4 @@ const ItemListContainer = ({greeting}) => {
 }
 
 export default ItemListContainer
+

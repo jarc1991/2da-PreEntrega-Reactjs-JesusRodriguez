@@ -16,7 +16,7 @@ function App() {
             <Routes>
 
                 <Route path='/' element={<ItemListContainer greeting={'Bienvenidos a la tienda de Adele'}/>}></Route>
-                <Route path='/categoria/categoriaId' element={<ItemListContainer />}></Route>
+                <Route path='/categoria/:categoriaId' element={<ItemListContainer />}></Route>
                 <Route path='/item/:itemId' element={<ItemDetailContainer />}></Route>
                 <Route path='*' element={<h1>404 NOT FOUND</h1>}></Route>
 
@@ -31,5 +31,3 @@ function App() {
 
 export default App;
 
-/*<ItemListContainer greeting={'Bienvenidos a la tienda de Adele'}/>
-<ItemDetailContainer />*/

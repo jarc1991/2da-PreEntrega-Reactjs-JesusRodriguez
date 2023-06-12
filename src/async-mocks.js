@@ -38,7 +38,7 @@ const products = [{
     id: 14,
     title:"vinilo",
     nombre: "Vinilo 30",
-    categoria: "vinilo",
+    categoria: "discos",
     precio: "6.000",
     stock: 5,
     color: "N/A",
@@ -50,7 +50,7 @@ const products = [{
     id: 15,
     title: "cd",
     nombre: "CD 30",
-    categoria: "disco",
+    categoria: "discos",
     precio: "4.500",
     stock: 5,
     color: "N/A",
@@ -62,7 +62,7 @@ const products = [{
     id: 16,
     title: "cassette",
     nombre: "Cass. Easy on me",
-    categoria: "cassette",
+    categoria: "discos",
     precio: "6.000",
     stock: 5,
     color: "negro",
@@ -85,7 +85,7 @@ const products = [{
     id: 18,
     title: "cd",
     nombre: "CD 19",
-    categoria: "disco",
+    categoria: "discos",
     precio: "3.500",
     stock: 5,
     img: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Adele_19.webp",
@@ -96,7 +96,7 @@ const products = [{
     id: 19,
     title: "cd",
     nombre: "CD 21",
-    categoria: "disco",
+    categoria: "discos",
     precio: "4.000",
     stock: 5,
     img: "https://upload.wikimedia.org/wikipedia/en/1/1b/Adele_-_21.png",
@@ -107,7 +107,7 @@ const products = [{
     id: 20,
     title: "cd",
     nombre: "CD 25",
-    categoria: "disco",
+    categoria: "discos",
     precio: "4.000",
     stock: 5,
     img: "https://http2.mlstatic.com/D_NQ_NP_335111-MLA20497658446_112015-W.jpg",
@@ -117,13 +117,23 @@ const products = [{
   }
 ]
 
-export const data = () => {
+export const data = (idCategory) => {
 
   return new Promise((resolve) => {
 
     setTimeout(() =>{
 
-      resolve(products)
+      if(idCategory) {
+
+        resolve(products.filter(producto =>
+        
+        producto.categoria === idCategory))
+
+      }else{
+
+        resolve(products)
+
+      }
 
     },500)
     
@@ -136,7 +146,7 @@ export const dataId = (productId) => {
 
         setTimeout(() => {
 
-          resolve(products.find(producto => producto.id === productId))
+          resolve(products.find(producto => producto.id === parseInt(productId)))
 
         }, 500)
 
